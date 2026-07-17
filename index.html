@@ -301,8 +301,13 @@ section{padding:clamp(5rem,10vw,8.5rem) 0;position:relative}
 .ioc li::before{content:">";color:var(--red)}
 
 /* ============ LAB ============ */
-.lab-panel{border:1px solid var(--hair);position:relative;overflow:hidden;background:#17171d}
-.lab-panel img{width:100%;height:auto;object-fit:cover;aspect-ratio:2/1;min-height:280px}
+.lab-panel{
+  border:1px solid var(--hair);position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 62% 75% at 50% 50%,rgba(46,197,255,.05),transparent 65%),var(--panel);
+  display:grid;place-items:center;
+  padding:clamp(2.5rem,7vw,5rem) clamp(1.5rem,5vw,4rem);
+}
+.lab-panel img{width:min(100%,860px);height:auto}
 .lab-panel .scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0 3px,rgba(0,0,0,.13) 3px 4px)}
 .lab-meta{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4rem);margin-top:2.6rem;align-items:start}
 @media(max-width:960px){.lab-meta{grid-template-columns:1fr}}
@@ -331,6 +336,8 @@ section{padding:clamp(5rem,10vw,8.5rem) 0;position:relative}
 @media(max-width:960px){.projects{grid-template-columns:1fr}}
 .proj{background:var(--panel);padding:1.7rem;display:flex;flex-direction:column;gap:.9rem;min-height:230px;transition:background .25s;position:relative}
 .proj:hover{background:var(--panel-2)}
+.proj.flag{grid-column:span 2}
+@media(max-width:640px){.proj.flag{grid-column:auto}}
 .proj .p-top{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
 .proj h3{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase}
 .proj:hover h3{text-shadow:-1.5px 0 var(--red),1.5px 0 var(--cyan)}
@@ -644,7 +651,7 @@ footer b{color:var(--dim);font-weight:500}
       <h2 data-scramble>HALCYON SYSTEMS</h2>
     </div>
     <div class="lab-panel reveal brkt">
-      <img src="assets/halcyon-system.webp" alt="Halcyon System brand banner, a white and cyan fox mark with glitch lettering" width="2000" height="1214" loading="lazy">
+      <img src="assets/halcyon-lockup.webp" alt="Halcyon System lockup, a white and cyan fox mark with glitch lettering" width="1629" height="584" loading="lazy">
       <div class="scan"></div>
     </div>
     <div class="lab-meta">
@@ -679,11 +686,11 @@ footer b{color:var(--dim);font-weight:500}
 <section id="projects">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="mod"><span class="sl">///</span> .SYS_04.SYSTEMS <span class="rt">COUNT :: 06</span></p>
+      <p class="mod"><span class="sl">///</span> .SYS_04.SYSTEMS <span class="rt">COUNT :: 05</span></p>
       <h2 data-scramble>SELECTED SYSTEMS</h2>
     </div>
     <div class="projects reveal">
-      <article class="proj">
+      <article class="proj flag">
         <p class="p-top"><span>SYS_01</span><span>CLASSIFIED_</span></p>
         <h3>HALCYON PRIME</h3>
         <p>The flagship. The core platform of Halcyon Systems, in active development. Publicly quiet on purpose; it gets revealed when it works, not before.</p>
@@ -708,13 +715,7 @@ footer b{color:var(--dim);font-weight:500}
         <div class="p-tags"><i>PYTHON</i><i>OBSIDIAN</i><i>GRAPH</i></div>
       </article>
       <article class="proj">
-        <p class="p-top"><span>SYS_05</span><span>REVERSE_</span></p>
-        <h3>OCTOWOW SUITE</h3>
-        <p>Five Lua addons for a 2006-era game client. Included reverse-engineering an undocumented XP mechanic from 318 logged combat events to prove the community's assumed value wrong.</p>
-        <div class="p-tags"><i>LUA</i><i>5 ADDONS</i><i>REVERSING</i></div>
-      </article>
-      <article class="proj">
-        <p class="p-top"><span>SYS_06</span><span>FLEET_</span></p>
+        <p class="p-top"><span>SYS_05</span><span>FLEET_</span></p>
         <h3>ERP FLEET</h3>
         <p>Ten production PHP applications for an industrial group: billing engines, reporting, print pipelines, and every deploy that keeps them alive. The day job's proving ground.</p>
         <div class="p-tags"><i>PHP</i><i>MYSQL</i><i>10 APPS</i></div>
