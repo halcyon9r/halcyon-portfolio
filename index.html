@@ -238,8 +238,27 @@ section{padding:clamp(5rem,10vw,8.5rem) 0;position:relative}
 .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
 @media(max-width:960px){.about-grid{grid-template-columns:1fr}}
 .pic{position:relative;border:1px solid var(--hair);max-width:420px;overflow:hidden}
-.pic img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 12%;filter:grayscale(100%) contrast(1.06);transition:filter .45s}
-.pic:hover img{filter:grayscale(20%) contrast(1.02)}
+.pic .id-void{
+  aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 42%,rgba(46,197,255,.06),transparent 70%),
+    linear-gradient(180deg,#101016,#0b0b0f);
+  position:relative;overflow:hidden;
+}
+.pic .id-void::before{
+  content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:linear-gradient(var(--hair) 1px,transparent 1px),linear-gradient(90deg,var(--hair) 1px,transparent 1px);
+  background-size:34px 34px;
+  mask-image:radial-gradient(ellipse 70% 60% at 50% 42%,black 30%,transparent 78%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 42%,black 30%,transparent 78%);
+}
+.pic .id-fox{width:42%;height:auto;opacity:.92;position:relative;filter:drop-shadow(0 0 22px rgba(46,197,255,.14))}
+.pic:hover .id-fox{opacity:1}
+.pic .id-tag{
+  position:relative;font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:var(--red);
+  text-transform:uppercase;border:1px solid rgba(255,45,85,.4);background:rgba(255,45,85,.06);
+  padding:.35rem .7rem;
+}
 .pic .scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0 3px,rgba(0,0,0,.14) 3px 4px)}
 .pic .meta{
   position:absolute;left:0;right:0;bottom:0;padding:.8rem 1rem;
@@ -490,9 +509,12 @@ footer b{color:var(--dim);font-weight:500}
     </div>
     <div class="about-grid">
       <figure class="pic reveal brkt">
-        <img src="assets/profile.webp" alt="Faqih, mirror selfie in a navy shirt and glasses" width="816" height="1275" loading="lazy">
+        <div class="id-void">
+          <img class="id-fox" src="assets/halcyon-mark.svg" alt="Halcyon fox mark" width="140" height="140" loading="lazy">
+          <span class="id-tag">Identity // Withheld</span>
+        </div>
         <div class="scan"></div>
-        <figcaption class="meta"><u></u>FAQIH // HALCYON <span>ID.VERIFIED</span></figcaption>
+        <figcaption class="meta"><u></u>FAQIH // HALCYON <span>STATUS: PRIVATE</span></figcaption>
       </figure>
       <div class="about-copy reveal" data-d="1">
         <p>
