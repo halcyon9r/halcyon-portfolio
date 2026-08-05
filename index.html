@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- GitHub Pages cannot send custom response headers, so the policy has to travel in the
+     document. A meta CSP is honoured for everything except frame-ancestors, sandbox and
+     report-uri, which are header-only by spec. Scope: one inline script, Google Fonts for
+     CSS and font files, local assets, one data: svg. Nothing else is permitted. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
 <title>HALCYON // Faqih :: Cybersecurity Engineer</title>
 <meta name="description" content="Faqih (HALCYON). Cybersecurity and AI engineer: web application security, DFIR, fleet-scale hardening, AI agents on corporate infrastructure. Builder of Halcyon Systems.">
 <meta property="og:title" content="HALCYON // Faqih :: Cybersecurity Engineer">
