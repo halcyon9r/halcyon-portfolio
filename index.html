@@ -292,10 +292,12 @@ section{padding:clamp(5rem,10vw,8.5rem) 0;position:relative}
 .badge{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;padding:.35rem .7rem;border:1px solid;align-self:center;white-space:nowrap}
 .badge.prog{color:var(--cyan);border-color:rgba(46,197,255,.4);background:rgba(46,197,255,.06)}
 .badge.next{color:var(--red);border-color:rgba(255,45,85,.4);background:rgba(255,45,85,.06)}
+.badge.done{color:var(--ok);border-color:rgba(39,201,63,.4);background:rgba(39,201,63,.07)}
 .cert .bar{grid-column:1/-1;display:flex;gap:3px;height:7px}
 .cert .bar u{flex:1;background:#1e1e26;text-decoration:none}
 .cert .bar u.on{background:var(--ink)}
 .cert .bar u.hot{background:var(--cyan);animation:seg 1.4s infinite}
+.cert .bar u.done{background:var(--ok)}
 @keyframes seg{50%{opacity:.35}}
 
 /* ============ FIELD RECORD (bento) ============ */
@@ -550,9 +552,9 @@ footer b{color:var(--dim);font-weight:500}
           <div class="certs-head"><span>CERT_TRACK.STATUS</span><span>PROGRESS: LOADING...</span></div>
           <div class="cert">
             <div class="c-name">CompTIA Security+<small>comptia security plus // exam SY0-701</small></div>
-            <span class="badge prog">IN PROGRESS</span>
-            <div class="bar" role="img" aria-label="Security plus study progress, in progress">
-              <u class="on"></u><u class="on"></u><u class="on"></u><u class="on"></u><u class="on"></u><u class="hot"></u><u></u><u></u><u></u><u></u>
+            <span class="badge done">CERTIFIED</span>
+            <div class="bar" role="img" aria-label="Security plus, certified">
+              <u class="done"></u><u class="done"></u><u class="done"></u><u class="done"></u><u class="done"></u><u class="done"></u><u class="done"></u><u class="done"></u><u class="done"></u><u class="done"></u>
             </div>
           </div>
           <div class="cert">
@@ -974,7 +976,7 @@ const SCRIPT=[
   {t:'cmd',x:'whoami'},
   {t:'out',x:'faqih :: cybersecurity // ai engineer // netrunner'},
   {t:'cmd',x:'./certs --status'},
-  {t:'out',x:'sec+   [######----]  <w>IN PROGRESS</w>'},
+  {t:'out',x:'sec+   [##########]  <k>CERTIFIED</k>'},
   {t:'out',x:'oscp   [####------]  <w>IN PROGRESS</w>'},
   {t:'out',x:'cissp  [----------]  <n>NEXT TARGET</n>'},
   {t:'cmd',x:'systemctl status halcyon-prime'},
