@@ -22,7 +22,7 @@
 <meta name="twitter:image" content="https://hlcyn.systems/assets/halcyon-system.webp">
 <meta name="theme-color" content="#0a0a0b">
 <link rel="canonical" href="https://hlcyn.systems/">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=3">
 <link rel="alternate icon" href="assets/fox-mark.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,7 +115,10 @@ section{padding:130px 0 0}
 /* lab */
 .lab{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .lab-img{background:var(--raise);border:1px solid var(--line);border-radius:14px;padding:44px 36px}
-.lab-img img{width:100%;height:auto}
+.lab-img{display:flex;align-items:center;justify-content:center;gap:22px;min-height:260px}
+.lab-img img{width:96px;height:96px;flex:none}
+.lockup{color:var(--ink);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;letter-spacing:.2em;line-height:1.15}
+.lockup span{display:block;font-family:var(--mono);font-size:.42em;font-weight:400;letter-spacing:.62em;color:var(--soft);margin-top:8px}
 .lab h2{margin:14px 0 20px}
 .lab p+p{margin-top:16px}
 
@@ -185,7 +188,7 @@ footer a:hover{color:var(--ink)}
 <header>
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="Halcyon, back to top">
-      <img src="assets/halcyon-mark.svg" alt="" width="26" height="26">
+      <img src="assets/halcyon-mark.svg?v=3" alt="" width="26" height="26">
       HALCYON
     </a>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">
@@ -220,7 +223,7 @@ footer a:hover{color:var(--ink)}
           <a class="btn" href="#contact">Get in touch</a>
         </div>
       </div>
-      <img class="hero-mark" src="assets/halcyon-mark.svg" alt="Halcyon fox mark" width="250" height="250">
+      <img class="hero-mark" src="assets/halcyon-mark.svg?v=3" alt="Halcyon fox mark" width="250" height="250">
     </div>
     <div class="stats">
       <div class="stat"><b>10</b><span>production applications hardened</span></div>
@@ -335,7 +338,8 @@ footer a:hover{color:var(--ink)}
   <div class="wrap">
     <div class="lab">
       <div class="lab-img reveal">
-        <img src="assets/halcyon-lockup.webp" alt="Halcyon System logo: a fox mark beside the wordmark" width="1629" height="584" loading="lazy">
+        <img src="assets/halcyon-mark.svg?v=3" alt="" width="96" height="96" loading="lazy">
+        <p class="lockup">HALCYON<span>SYSTEMS</span></p>
       </div>
       <div class="reveal">
         <p class="eyebrow">Independent lab</p>
@@ -412,7 +416,7 @@ footer a:hover{color:var(--ink)}
 
 <section id="contact" class="contact">
   <div class="wrap">
-    <img class="reveal" src="assets/halcyon-mark.svg" alt="" width="64" height="64" loading="lazy">
+    <img class="reveal" src="assets/halcyon-mark.svg?v=3" alt="" width="64" height="64" loading="lazy">
     <h2 class="reveal">Get in touch.</h2>
     <p class="reveal">For security assessments, incident response or AI deployment work, email is the fastest way to reach me.</p>
     <div class="cta reveal">
