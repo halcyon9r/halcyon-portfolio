@@ -6,905 +6,404 @@
 <!-- GitHub Pages cannot send custom response headers, so the policy has to travel in the
      document. A meta CSP is honoured for everything except frame-ancestors, sandbox and
      report-uri, which are header-only by spec. Scope: one inline script, Google Fonts for
-     CSS and font files, local assets, one data: svg. Nothing else is permitted. -->
+     CSS and font files, local assets. Nothing else is permitted. -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
-<title>HALCYON // Faqih :: Cybersecurity Engineer</title>
-<meta name="description" content="Faqih (HALCYON). Cybersecurity and AI engineer: web application security, DFIR, fleet-scale hardening, AI agents on corporate infrastructure. Builder of Halcyon Systems.">
-<meta property="og:title" content="HALCYON // Faqih :: Cybersecurity Engineer">
-<meta property="og:description" content="Web application security, incident response, and Halcyon Systems. Current focus: Halcyon Prime.">
+<title>Halcyon | Faqih, Cybersecurity and AI Engineer</title>
+<meta name="description" content="Faqih (Halcyon). Cybersecurity and AI engineer: web application security, incident response, hardening at fleet scale, and AI agents on corporate infrastructure.">
+<meta property="og:title" content="Halcyon | Faqih, Cybersecurity and AI Engineer">
+<meta property="og:description" content="Web application security, incident response, and AI agents on corporate infrastructure.">
 <meta property="og:image" content="https://hlcyn.systems/assets/halcyon-system.webp">
 <meta property="og:url" content="https://hlcyn.systems/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="HALCYON // Faqih :: Cybersecurity Engineer">
-<meta name="twitter:description" content="Web application security, incident response, and Halcyon Systems. Current focus: Halcyon Prime.">
+<meta name="twitter:title" content="Halcyon | Faqih, Cybersecurity and AI Engineer">
+<meta name="twitter:description" content="Web application security, incident response, and AI agents on corporate infrastructure.">
 <meta name="twitter:image" content="https://hlcyn.systems/assets/halcyon-system.webp">
+<meta name="theme-color" content="#0a0a0b">
 <link rel="canonical" href="https://hlcyn.systems/">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="alternate icon" href="assets/fox-mark.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ============ TOKENS :: CP2077 structure x Palantir restraint ============ */
 :root{
-  --void:#060608;
-  --panel:#0d0d11;
-  --panel-2:#111116;
-  --ink:#f2f2f4;
-  --dim:#a2a2ac;
-  --faint:#5c5c66;
-  --hair:rgba(242,242,244,.1);
-  --hair-hot:rgba(242,242,244,.32);
-  --red:#ff2d55;
-  --cyan:#2ec5ff;
-  --ok:#27c93f;
-  --display:'Chakra Petch',sans-serif;
-  --hud:'Rajdhani',sans-serif;
-  --body:'Inter',system-ui,sans-serif;
-  --mono:'JetBrains Mono',monospace;
-  --cut:14px; /* chamfer size */
+  --bg:#0a0a0b;
+  --raise:#111113;
+  --ink:#f5f5f7;
+  --soft:#a1a1a6;
+  --dim:#6e6e73;
+  --line:rgba(255,255,255,.1);
+  --line-2:rgba(255,255,255,.18);
+  --ok:#30d158;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --w:1120px;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  background:var(--void);color:var(--ink);
-  font-family:var(--body);font-size:1rem;line-height:1.7;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
-}
-::selection{background:var(--ink);color:var(--void)}
-::-webkit-scrollbar{width:9px}
-::-webkit-scrollbar-track{background:var(--void)}
-::-webkit-scrollbar-thumb{background:#26262e}
-::-webkit-scrollbar-thumb:hover{background:#38383f}
-a{color:inherit;text-decoration:none}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{max-width:100%;display:block}
-button{font:inherit;cursor:pointer}
+a{color:inherit;text-decoration:none}
 ul{list-style:none}
-:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+::selection{background:var(--ink);color:var(--bg)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 32px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:6px;z-index:100}
+.skip:focus{left:8px}
 
-/* grain */
-body::before{
-  content:"";position:fixed;inset:0;z-index:3000;pointer-events:none;opacity:.045;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
+/* nav */
+header{position:sticky;top:0;z-index:50;background:rgba(10,10,11,.72);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid transparent;transition:border-color .3s}
+header.scrolled{border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px;letter-spacing:.14em}
+.brand img{width:26px;height:26px}
+.nav-links{display:flex;gap:30px;font-size:14px;color:var(--soft)}
+.nav-links a{transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-toggle{display:none;background:none;border:0;color:var(--ink);padding:10px;margin-right:-10px;cursor:pointer}
 
-/* mono label, CP module style */
-.mod{
-  font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;color:var(--dim);
-  display:flex;align-items:baseline;gap:1rem;text-transform:uppercase;
-}
-.mod .sl{color:var(--red)}
-.mod .rt{margin-left:auto;color:var(--faint);letter-spacing:.18em}
-@media(max-width:640px){.mod .rt{display:none}}
+/* type */
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+h1{font-size:clamp(2.6rem,6.4vw,5rem);font-weight:600;line-height:1.04;letter-spacing:-.035em}
+h2{font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:600;line-height:1.1;letter-spacing:-.03em}
+h3{font-size:1.2rem;font-weight:600;line-height:1.3;letter-spacing:-.012em}
+p{color:var(--soft)}
+p strong{color:var(--ink);font-weight:500}
 
-/* chamfer helper */
-.chamfer{clip-path:polygon(0 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%)}
+/* hero */
+.hero{padding:120px 0 0}
+.hero-top{display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center}
+.hero h1{margin:18px 0 26px}
+.hero h1 span{color:var(--dim)}
+.hero-sub{font-size:1.2rem;line-height:1.55;max-width:38em}
+.hero-mark{width:clamp(150px,20vw,250px);height:auto;opacity:.95}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.btn{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 24px;border-radius:999px;font-size:15px;font-weight:500;border:1px solid var(--line-2);transition:background .2s,border-color .2s,color .2s}
+.btn:hover{border-color:var(--ink)}
+.btn-solid{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn-solid:hover{background:#fff}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:100px;border-top:1px solid var(--line)}
+.stat{padding:30px 24px 0 0}
+.stat b{display:block;font-size:clamp(1.9rem,3.4vw,2.7rem);font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.stat span{display:block;margin-top:8px;font-size:14px;color:var(--soft)}
 
-/* corner brackets */
-.brkt{position:relative}
-.brkt::before,.brkt::after{
-  content:"";position:absolute;width:14px;height:14px;pointer-events:none;
-  border:1px solid var(--hair-hot);z-index:2;
-}
-.brkt::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
-.brkt::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+/* sections */
+section{padding:130px 0 0}
+.sec-head{max-width:44em;margin-bottom:60px}
+.sec-head h2{margin:14px 0 18px}
+.sec-head p{font-size:1.1rem}
 
-/* ============ NAV ============ */
-header{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  border-bottom:1px solid transparent;transition:background .3s,border-color .3s;
-}
-header.scrolled{background:rgba(6,6,8,.86);backdrop-filter:blur(12px);border-color:var(--hair)}
-.nav{display:flex;align-items:center;height:70px;gap:2rem}
-.nav-brand{display:flex;align-items:center;gap:.7rem;min-height:44px}
-.nav-brand img{width:32px;height:32px;object-fit:cover}
-.nav-brand b{font-family:var(--display);font-weight:700;font-size:.95rem;letter-spacing:.3em}
-.nav-tag{font-family:var(--mono);font-size:.62rem;color:var(--faint);letter-spacing:.14em;border-left:1px solid var(--hair);padding-left:1rem;height:20px;line-height:20px}
-@media(max-width:960px){.nav-tag{display:none}}
-.nav-links{display:flex;gap:.2rem;margin-left:auto}
-.nav-links a{
-  font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;color:var(--dim);
-  padding:.6rem .8rem;transition:color .2s,background .2s;
-}
-.nav-links a:hover,.nav-links a.active{color:var(--ink);background:rgba(242,242,244,.06)}
-.nav-toggle{display:none;background:none;border:1px solid var(--hair);width:44px;height:44px;color:var(--ink);margin-left:auto}
-@media(max-width:820px){
-  .nav-links{position:fixed;top:70px;right:0;left:0;flex-direction:column;padding:.8rem;gap:.2rem;
-    background:rgba(6,6,8,.97);border-bottom:1px solid var(--hair);
-    transform:translateY(-130%);transition:transform .3s ease}
-  .nav-links.open{transform:translateY(0)}
-  .nav-links a{display:block;padding:.9rem 1rem;font-size:.9rem}
-  .nav-toggle{display:grid;place-items:center}
-}
+/* case rows */
+.cases{border-top:1px solid var(--line)}
+.case{display:grid;grid-template-columns:230px 1fr;gap:48px;padding:44px 0;border-bottom:1px solid var(--line)}
+.case-k b{display:block;font-size:2.5rem;font-weight:600;letter-spacing:-.035em;line-height:1}
+.case-k span{display:block;margin-top:12px;font-size:14px;color:var(--soft);max-width:15em}
+.case-b h3{margin:8px 0 12px}
+.case-b p{max-width:44em}
+.case-b ul{margin-top:16px;max-width:44em}
+.case-b li{position:relative;padding-left:18px;color:var(--soft);font-size:16px;margin-top:6px}
+.case-b li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:1px;background:var(--dim)}
 
-/* ============ HERO ============ */
-.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;padding-top:100px}
-.hero-grid{
-  position:absolute;inset:0;pointer-events:none;opacity:.55;
-  background-image:linear-gradient(var(--hair) 1px,transparent 1px),linear-gradient(90deg,var(--hair) 1px,transparent 1px);
-  background-size:64px 64px;
-  mask-image:radial-gradient(ellipse 70% 60% at 45% 40%,black 15%,transparent 72%);
-  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 45% 40%,black 15%,transparent 72%);
-}
-.hero-glow{
-  position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 55% 40% at 72% 22%,rgba(46,197,255,.05),transparent 60%),
-    radial-gradient(ellipse 45% 35% at 15% 85%,rgba(255,45,85,.04),transparent 60%);
-}
-.hero-inner{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(2rem,5vw,4rem);align-items:center}
-@media(max-width:1020px){.hero-inner{grid-template-columns:1fr}}
-h1.glitch{
-  font-family:var(--display);font-weight:700;text-transform:uppercase;
-  font-size:clamp(3.2rem,10.5vw,8rem);letter-spacing:.02em;line-height:.95;
-  position:relative;width:fit-content;
-}
-h1.glitch::before,h1.glitch::after{content:attr(data-text);position:absolute;inset:0;opacity:0}
-h1.glitch::before{color:var(--red);z-index:-1}
-h1.glitch::after{color:var(--cyan);z-index:-2}
-.glitch.burst::before{opacity:.85;animation:gl-r .36s steps(2,end)}
-.glitch.burst::after{opacity:.85;animation:gl-c .36s steps(2,end)}
-@keyframes gl-r{0%{transform:translate(-5px,2px);clip-path:inset(10% 0 60% 0)}50%{transform:translate(5px,-2px);clip-path:inset(62% 0 6% 0)}100%{transform:none;clip-path:inset(0)}}
-@keyframes gl-c{0%{transform:translate(5px,-2px);clip-path:inset(55% 0 14% 0)}50%{transform:translate(-5px,2px);clip-path:inset(4% 0 72% 0)}100%{transform:none;clip-path:inset(0)}}
-.hero-role{
-  font-family:var(--hud);font-weight:600;text-transform:uppercase;letter-spacing:.34em;
-  font-size:clamp(.8rem,1.6vw,1.05rem);color:var(--dim);margin-top:1.1rem;
-}
-.hero-role em{font-style:normal;color:var(--ink)}
-.hero-sub{margin-top:1.6rem;max-width:33rem;color:var(--dim);font-size:1.04rem}
-.hero-sub strong{color:var(--ink);font-weight:600}
-.hero-cta{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.4rem}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--raise);border:1px solid var(--line);border-radius:14px;padding:32px 30px 34px}
+.card h3{margin:10px 0 12px}
+.card p{font-size:16px}
 
-/* CP notched button */
-.btn{
-  display:inline-flex;align-items:center;gap:.6rem;min-height:50px;padding:.75rem 1.7rem;
-  font-family:var(--mono);font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;
-  border:1px solid var(--hair-hot);background:transparent;color:var(--ink);
-  clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%);
-  position:relative;transition:background .2s,color .2s,border-color .2s;
-}
-.btn::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:currentColor;opacity:.35}
-.btn:hover{background:rgba(242,242,244,.07);border-color:var(--ink)}
-.btn-solid{background:var(--ink);color:var(--void);border-color:var(--ink)}
-.btn-solid:hover{background:#fff;color:var(--void)}
-.btn svg{width:15px;height:15px;flex:none}
+/* lab */
+.lab{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.lab-img{background:var(--raise);border:1px solid var(--line);border-radius:14px;padding:44px 36px}
+.lab-img img{width:100%;height:auto}
+.lab h2{margin:14px 0 20px}
+.lab p+p{margin-top:16px}
 
-/* terminal */
-.term{
-  background:#0a0a0e;border:1px solid var(--hair);
-  font-family:var(--mono);font-size:.8rem;line-height:1.8;
-  box-shadow:0 30px 80px rgba(0,0,0,.55);
-}
-.term-bar{display:flex;align-items:center;padding:.65rem 1rem;border-bottom:1px solid var(--hair);gap:.6rem}
-.term-bar u{width:10px;height:2px;background:var(--faint);text-decoration:none}
-.term-bar span{margin-left:auto;font-size:.66rem;color:var(--faint);letter-spacing:.16em;text-transform:uppercase}
-.term-body{padding:1.1rem 1.2rem;min-height:236px}
-.term-body .ln{white-space:pre-wrap;word-break:break-word}
-.term-body .p{color:var(--cyan)}
-.term-body .out{color:var(--dim)}
-.term-body .ok{color:var(--ok)}
-.term-body .warn{color:var(--cyan)}
-.term-body .next{color:var(--red)}
-.caret{display:inline-block;width:8px;height:14px;background:var(--ink);vertical-align:-2px;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
+/* experience */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:72px}
+.two h2{margin:14px 0 36px}
+.rows{border-top:1px solid var(--line)}
+.row{padding:26px 0;border-bottom:1px solid var(--line)}
+.row-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.row-top small{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+.row-top small.ok{color:var(--ok)}
+.row .org{font-size:15px;color:var(--soft);margin-top:4px}
+.row .desc{font-size:16px;margin-top:12px}
 
-/* stat readout strip */
-.stats{
-  margin:4.5rem 0 3rem;border:1px solid var(--hair);background:var(--panel);
-  display:grid;grid-template-columns:repeat(4,1fr);position:relative;
-}
-@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
-.stat{padding:1.5rem 1.6rem;border-right:1px solid var(--hair);position:relative}
-.stat:last-child{border-right:0}
-@media(max-width:900px){.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--hair)}}
-.stat b{font-family:var(--hud);font-weight:700;font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1;display:block;white-space:nowrap}
-.stat b i{font-style:normal;color:var(--faint);font-size:.6em}
-.stat span{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;color:var(--dim);text-transform:uppercase;display:block;margin-top:.5rem}
+/* skills */
+.skills{border-top:1px solid var(--line)}
+.skill{display:grid;grid-template-columns:230px 1fr;gap:48px;padding:22px 0;border-bottom:1px solid var(--line)}
+.skill dt{font-weight:500}
+.skill dd{color:var(--soft);font-size:16px}
 
-/* ============ SECTIONS ============ */
-section{padding:clamp(5rem,10vw,8.5rem) 0;position:relative}
-.rule{border:0;border-top:1px solid var(--hair);position:relative;margin:0}
-.rule::before,.rule::after{
-  content:"+";position:absolute;top:-11px;font-family:var(--mono);font-size:.8rem;color:var(--faint);
-}
-.rule::before{left:clamp(1.25rem,4vw,3rem)}
-.rule::after{right:clamp(1.25rem,4vw,3rem)}
-.sec-head{margin-bottom:clamp(2.5rem,6vw,4.5rem)}
-.sec-head .mod{margin-bottom:1.4rem}
-.sec-head h2{
-  font-family:var(--display);font-weight:700;text-transform:uppercase;
-  font-size:clamp(2rem,5.5vw,3.6rem);letter-spacing:.02em;line-height:1.05;
-}
-.sec-head .lede{margin-top:1.1rem;color:var(--dim);max-width:44rem}
+/* contact */
+.contact{text-align:center;padding-bottom:130px}
+.contact img{width:64px;height:64px;margin:0 auto 30px}
+.contact p{max-width:30em;margin:18px auto 0;font-size:1.1rem}
+.contact .cta{justify-content:center}
 
-/* ticker */
-.ticker{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);overflow:hidden;padding:.85rem 0;user-select:none}
-.ticker-track{display:flex;width:max-content;animation:tick 36s linear infinite}
-.ticker span{
-  font-family:var(--display);font-size:.8rem;font-weight:600;letter-spacing:.34em;color:var(--faint);
-  text-transform:uppercase;white-space:nowrap;padding-right:3.5rem;
-}
-.ticker span b{color:var(--dim);font-weight:600}
-.ticker span i{font-style:normal;color:var(--red)}
-@keyframes tick{to{transform:translateX(-50%)}}
-
-/* giant ghost marquee (palantir bleed) */
-.ghost{overflow:hidden;padding:1.5rem 0;border-bottom:1px solid var(--hair)}
-.ghost-track{display:flex;width:max-content;animation:tick 60s linear infinite}
-.ghost span{
-  font-family:var(--display);font-weight:700;text-transform:uppercase;white-space:nowrap;
-  font-size:clamp(4rem,11vw,9rem);line-height:1;padding-right:4rem;
-  color:transparent;-webkit-text-stroke:1px rgba(242,242,244,.14);
-}
-
-/* ============ ABOUT ============ */
-.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
-@media(max-width:960px){.about-grid{grid-template-columns:1fr}}
-.pic{position:relative;border:1px solid var(--hair);max-width:420px;overflow:hidden}
-.pic .id-void{
-  aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;
-  background:
-    radial-gradient(ellipse 70% 55% at 50% 42%,rgba(46,197,255,.06),transparent 70%),
-    linear-gradient(180deg,#101016,#0b0b0f);
-  position:relative;overflow:hidden;
-}
-.pic .id-void::before{
-  content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
-  background-image:linear-gradient(var(--hair) 1px,transparent 1px),linear-gradient(90deg,var(--hair) 1px,transparent 1px);
-  background-size:34px 34px;
-  mask-image:radial-gradient(ellipse 70% 60% at 50% 42%,black 30%,transparent 78%);
-  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 42%,black 30%,transparent 78%);
-}
-.pic .id-fox{width:42%;height:auto;opacity:.92;position:relative;filter:drop-shadow(0 0 22px rgba(46,197,255,.14))}
-.pic:hover .id-fox{opacity:1}
-.pic .id-tag{
-  position:relative;font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:var(--red);
-  text-transform:uppercase;border:1px solid rgba(255,45,85,.4);background:rgba(255,45,85,.06);
-  padding:.35rem .7rem;
-}
-.pic .scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0 3px,rgba(0,0,0,.14) 3px 4px)}
-.pic .meta{
-  position:absolute;left:0;right:0;bottom:0;padding:.8rem 1rem;
-  display:flex;align-items:center;gap:.7rem;
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
-  background:linear-gradient(180deg,transparent,rgba(6,6,8,.9) 40%);
-}
-.pic .meta u{width:8px;height:8px;background:var(--ok);text-decoration:none;box-shadow:0 0 10px var(--ok)}
-.pic .meta span{margin-left:auto;color:var(--faint)}
-.about-copy p{color:var(--dim);margin-bottom:1.15rem;max-width:39rem}
-.about-copy p strong{color:var(--ink);font-weight:600}
-
-/* certs: CP progress readout */
-.certs{margin-top:2.4rem;border:1px solid var(--hair);background:var(--panel)}
-.certs-head{
-  padding:.8rem 1.2rem;border-bottom:1px solid var(--hair);
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;color:var(--dim);text-transform:uppercase;
-  display:flex;justify-content:space-between;
-}
-.certs-head span:last-child{color:var(--faint)}
-.cert{display:grid;grid-template-columns:1fr auto;gap:.4rem 1rem;padding:1.05rem 1.2rem;border-bottom:1px solid var(--hair)}
-.cert:last-child{border-bottom:0}
-.cert .c-name{font-family:var(--hud);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:1rem}
-.cert .c-name small{display:block;font-family:var(--mono);font-size:.64rem;color:var(--faint);letter-spacing:.12em;margin-top:2px}
-.badge{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;padding:.35rem .7rem;border:1px solid;align-self:center;white-space:nowrap}
-.badge.prog{color:var(--cyan);border-color:rgba(46,197,255,.4);background:rgba(46,197,255,.06)}
-.badge.next{color:var(--red);border-color:rgba(255,45,85,.4);background:rgba(255,45,85,.06)}
-.badge.done{color:var(--ok);border-color:rgba(39,201,63,.4);background:rgba(39,201,63,.07)}
-.cert .bar{grid-column:1/-1;display:flex;gap:3px;height:7px}
-.cert .bar u{flex:1;background:#1e1e26;text-decoration:none}
-.cert .bar u.on{background:var(--ink)}
-.cert .bar u.hot{background:var(--cyan);animation:seg 1.4s infinite}
-.cert .bar u.done{background:var(--ok)}
-@keyframes seg{50%{opacity:.35}}
-
-/* ============ FIELD RECORD (bento) ============ */
-.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair)}
-.cell{
-  background:var(--panel);padding:1.7rem;position:relative;overflow:hidden;
-  display:flex;flex-direction:column;gap:.75rem;transition:background .25s;
-}
-.cell:hover{background:var(--panel-2)}
-.cell::after{
-  content:"";position:absolute;top:0;right:0;width:0;height:0;
-  border-style:solid;border-width:0 12px 12px 0;border-color:transparent var(--void) transparent transparent;
-  opacity:0;transition:opacity .2s;
-}
-.cell:hover::after{opacity:1}
-.cell.w2{grid-column:span 2}.cell.w3{grid-column:span 3}.cell.w4{grid-column:span 4}.cell.w6{grid-column:span 6}
-@media(max-width:960px){.cell.w2,.cell.w3,.cell.w4,.cell.w6{grid-column:span 6}.bento{grid-template-columns:1fr}
-  .cell.w2,.cell.w3{grid-column:span 1}.cell.w4,.cell.w6{grid-column:span 1}}
-.cell .tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
-.cell .tag i{font-style:normal;color:var(--red)}
-.cell h3{font-family:var(--hud);font-weight:700;font-size:1.16rem;letter-spacing:.05em;text-transform:uppercase;line-height:1.25}
-.cell p{color:var(--dim);font-size:.9rem}
-.cell .num{font-family:var(--hud);font-weight:700;font-size:clamp(2.2rem,4.5vw,3.4rem);line-height:1}
-.cell .num i{font-style:normal;color:var(--faint);font-size:.55em}
-.cell .foot{margin-top:auto;font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;color:var(--faint);text-transform:uppercase}
-.cell .foot b{color:var(--cyan);font-weight:500}
-.ioc{margin-top:.4rem;font-family:var(--mono);font-size:.76rem;line-height:2;color:var(--dim)}
-.ioc li{display:flex;gap:.8rem;align-items:baseline}
-.ioc li::before{content:">";color:var(--red)}
-
-/* ============ LAB ============ */
-.lab-panel{
-  border:1px solid var(--hair);position:relative;overflow:hidden;
-  background:radial-gradient(ellipse 62% 75% at 50% 50%,rgba(46,197,255,.05),transparent 65%),var(--panel);
-  display:grid;place-items:center;
-  padding:clamp(2.5rem,7vw,5rem) clamp(1.5rem,5vw,4rem);
-}
-.lab-panel img{width:min(100%,860px);height:auto}
-.lab-panel .scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0 3px,rgba(0,0,0,.13) 3px 4px)}
-.lab-meta{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4rem);margin-top:2.6rem;align-items:start}
-@media(max-width:960px){.lab-meta{grid-template-columns:1fr}}
-.lab-meta p{color:var(--dim);margin-bottom:1.1rem;max-width:38rem}
-.lab-meta p strong{color:var(--ink);font-weight:600}
-.status{border:1px solid var(--hair);background:var(--panel)}
-.status .st-head{
-  font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--dim);text-transform:uppercase;
-  padding:.8rem 1.2rem;border-bottom:1px solid var(--hair);display:flex;justify-content:space-between;
-}
-.status .st-head span:last-child{color:var(--ok)}
-.status li{
-  display:flex;align-items:center;gap:.85rem;padding:.9rem 1.2rem;border-bottom:1px solid var(--hair);
-  font-family:var(--hud);font-weight:600;font-size:.95rem;letter-spacing:.08em;text-transform:uppercase;
-}
-.status li:last-child{border-bottom:0}
-.status li u{width:8px;height:8px;flex:none;text-decoration:none}
-.status li span{margin-left:auto;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;color:var(--dim)}
-.led-live{background:var(--ok);box-shadow:0 0 9px rgba(39,201,63,.8);animation:pulse 2s infinite}
-.led-dev{background:var(--cyan);box-shadow:0 0 9px rgba(46,197,255,.7)}
-.led-idle{background:#43434e}
-@keyframes pulse{50%{opacity:.4}}
-
-/* ============ PROJECTS ============ */
-.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair)}
-@media(max-width:960px){.projects{grid-template-columns:1fr}}
-.proj{background:var(--panel);padding:1.7rem;display:flex;flex-direction:column;gap:.9rem;min-height:230px;transition:background .25s;position:relative}
-.proj:hover{background:var(--panel-2)}
-.proj.flag{grid-column:span 2}
-@media(max-width:640px){.proj.flag{grid-column:auto}}
-.proj .p-top{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
-.proj h3{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase}
-.proj:hover h3{text-shadow:-1.5px 0 var(--red),1.5px 0 var(--cyan)}
-.proj p{color:var(--dim);font-size:.88rem}
-.proj .p-tags{margin-top:auto;display:flex;flex-wrap:wrap;gap:.4rem}
-.proj .p-tags i{font-style:normal;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--dim);border:1px solid var(--hair);padding:.22rem .5rem;text-transform:uppercase}
-
-/* ============ EXPERIENCE ============ */
-.xp{border:1px solid var(--hair);background:var(--panel)}
-.xp-item{display:grid;grid-template-columns:180px 1fr;gap:1.5rem;padding:1.8rem;border-bottom:1px solid var(--hair)}
-.xp-item:last-child{border-bottom:0}
-@media(max-width:820px){.xp-item{grid-template-columns:1fr;gap:.6rem}}
-.xp-when{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;color:var(--faint);text-transform:uppercase;padding-top:.35rem}
-.xp-when b{display:block;color:var(--cyan);font-weight:500;margin-bottom:.2rem}
-.xp-body h3{font-family:var(--hud);font-weight:700;font-size:1.2rem;letter-spacing:.06em;text-transform:uppercase}
-.xp-org{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;color:var(--dim);margin:.25rem 0 .7rem;text-transform:uppercase}
-.xp-body p{color:var(--dim);font-size:.92rem;max-width:44rem}
-
-/* ============ SKILLS ============ */
-.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair)}
-@media(max-width:820px){.skills{grid-template-columns:1fr}}
-.skill-group{background:var(--panel);padding:1.6rem}
-.skill-group.wide{grid-column:1/-1}
-.skill-group h3{
-  font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.2em;color:var(--dim);
-  text-transform:uppercase;margin-bottom:1.1rem;display:flex;gap:.7rem;align-items:center;
-}
-.skill-group h3 i{font-style:normal;color:var(--red)}
-.chips{display:flex;flex-wrap:wrap;gap:.45rem}
-.chips i{
-  font-style:normal;font-family:var(--mono);font-size:.74rem;color:var(--ink);
-  border:1px solid var(--hair);padding:.4rem .7rem;transition:border-color .2s,background .2s;
-}
-.chips i:hover{border-color:var(--hair-hot);background:rgba(242,242,244,.05)}
-
-/* ============ CONTACT ============ */
-.contact{text-align:center}
-.contact .fox{width:92px;height:auto;margin:0 auto 1.8rem;border:0}
-.contact h2{font-family:var(--display);font-weight:700;font-size:clamp(2.1rem,6vw,3.6rem);letter-spacing:.03em;text-transform:uppercase}
-.contact .sub{color:var(--dim);max-width:30rem;margin:1.1rem auto 2.4rem}
-.contact-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-footer{border-top:1px solid var(--hair);padding:1.5rem 0}
-footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
-footer span{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;color:var(--faint);text-transform:uppercase}
-footer b{color:var(--dim);font-weight:500}
-
-/* hazard accent */
-.hazard{
-  height:8px;
-  background:repeating-linear-gradient(-45deg,rgba(242,242,244,.14) 0 10px,transparent 10px 22px);
-  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
-}
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:13px;color:var(--dim)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer a:hover{color:var(--ink)}
 
 /* reveal */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
-.reveal[data-d="1"]{transition-delay:.08s}.reveal[data-d="2"]{transition-delay:.16s}
-.reveal[data-d="3"]{transition-delay:.24s}.reveal[data-d="4"]{transition-delay:.32s}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-  html{scroll-behavior:auto}
-  .reveal{opacity:1;transform:none}
-  .ticker-track,.ghost-track{animation:none}
+@media (max-width:900px){
+  .cards{grid-template-columns:1fr}
+  .lab,.two{grid-template-columns:1fr;gap:56px}
+  .case,.skill{grid-template-columns:1fr;gap:18px}
+  .case-k span{max-width:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat{padding-bottom:6px}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  .hero{padding-top:72px}
+  .hero-top{grid-template-columns:1fr}
+  .hero-mark{display:none}
+  .hero-sub{font-size:1.08rem}
+  section{padding-top:96px}
+  .sec-head{margin-bottom:44px}
+  .stats{margin-top:72px}
+  .contact{padding-bottom:96px}
+  .nav-toggle{display:block;margin-left:auto}
+  .nav-links{position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:6px 20px 14px;display:none;font-size:16px}
+  .nav-links.open{display:flex}
+  .nav-links a{display:block;padding:12px 0}
+  .row-top{flex-direction:column;gap:4px}
+  .btn{width:100%;justify-content:center}
 }
 </style>
 </head>
-<body>
+<body id="top">
+<a class="skip" href="#work">Skip to content</a>
 
-<header id="top">
+<header>
   <div class="wrap nav">
-    <a class="nav-brand" href="#top" aria-label="HALCYON, back to top">
-      <img src="assets/halcyon-mark.svg" alt="" width="32" height="32">
-      <b>HALCYON</b>
+    <a class="brand" href="#top" aria-label="Halcyon, back to top">
+      <img src="assets/halcyon-mark.svg" alt="" width="26" height="26">
+      HALCYON
     </a>
-    <span class="nav-tag">SYS.PORTFOLIO_v2</span>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
     </button>
     <nav aria-label="Primary">
       <ul class="nav-links" id="navlinks">
-        <li><a href="#about">/profile</a></li>
-        <li><a href="#security">/field_record</a></li>
-        <li><a href="#halcyon">/the_lab</a></li>
-        <li><a href="#projects">/systems</a></li>
-        <li><a href="#ai">/ai_ops</a></li>
-        <li><a href="#experience">/service</a></li>
-        <li><a href="#contact">/contact</a></li>
+        <li><a href="#work">Security</a></li>
+        <li><a href="#ai">AI</a></li>
+        <li><a href="#lab">Lab</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <main>
-<!-- ============ HERO ============ -->
 <section class="hero" aria-label="Intro">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="wrap" style="position:relative">
-    <p class="mod" style="margin-bottom:2rem"><span class="sl">///</span> .NETRUNNER.PROFILE_LOADED <span class="rt">LOC :: INDONESIA // 2026</span></p>
-    <div class="hero-inner">
+  <div class="wrap">
+    <div class="hero-top">
       <div>
-        <h1 class="glitch" data-text="HALCYON">HALCYON</h1>
-        <p class="hero-role">CYBERSECURITY // AI <em>ENGINEER_</em></p>
+        <p class="eyebrow">Faqih / Indonesia</p>
+        <h1>Cybersecurity <span>and</span> AI engineer.</h1>
         <p class="hero-sub">
-          I'm <strong>Faqih</strong>. I harden production systems for a living,
-          run the investigation when a server gets popped, and build
-          <strong>Halcyon Systems</strong> after dark.
-          Current focus: <strong>Halcyon Prime</strong>.
+          I secure web applications that businesses depend on every day, lead the
+          investigation when a server is compromised, and put AI agents to work on
+          corporate infrastructure without widening the attack surface.
         </p>
-        <div class="hero-cta">
-          <a class="btn btn-solid" href="#security">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/></svg>
-            FIELD RECORD
-          </a>
-          <a class="btn" href="#contact">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
-            OPEN CHANNEL
-          </a>
+        <div class="cta">
+          <a class="btn btn-solid" href="#work">View security work</a>
+          <a class="btn" href="#contact">Get in touch</a>
         </div>
       </div>
-      <div class="term brkt" aria-hidden="true">
-        <div class="term-bar"><u></u><u></u><u></u><span>halcyon@prime:~</span></div>
-        <div class="term-body" id="term"></div>
-      </div>
+      <img class="hero-mark" src="assets/halcyon-mark.svg" alt="Halcyon fox mark" width="250" height="250">
     </div>
-    <div class="stats reveal brkt" id="stats">
-      <div class="stat"><b><span data-n="10">0</span></b><span>production apps hardened</span></div>
-      <div class="stat"><b><span data-n="83">0</span></b><span>critical / high findings closed</span></div>
-      <div class="stat"><b><span data-n="5578">0</span></b><span>injection points mapped</span></div>
-      <div class="stat"><b><span data-n="1">0</span><i>x</i></b><span>root compromise evicted</span></div>
+    <div class="stats">
+      <div class="stat"><b>10</b><span>production applications hardened</span></div>
+      <div class="stat"><b>83</b><span>critical and high findings closed</span></div>
+      <div class="stat"><b>5,578</b><span>injection points mapped and fixed</span></div>
+      <div class="stat"><b>7 weeks</b><span>of attacker dwell time reconstructed</span></div>
     </div>
   </div>
 </section>
 
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span><b>HARDEN</b> <i>///</i> <b>DETECT</b> <i>///</i> <b>RESPOND</b> <i>///</i> <b>BUILD</b> <i>///</i> <b>REPEAT</b> <i>///</i></span>
-    <span><b>HARDEN</b> <i>///</i> <b>DETECT</b> <i>///</i> <b>RESPOND</b> <i>///</i> <b>BUILD</b> <i>///</i> <b>REPEAT</b> <i>///</i></span>
-  </div>
-</div>
-
-<!-- ============ ABOUT ============ -->
-<section id="about">
+<section id="work">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="mod"><span class="sl">///</span> .SYS_01.PROFILE <span class="rt">CLEARANCE :: PUBLIC</span></p>
-      <h2 data-scramble>OPERATOR PROFILE</h2>
+      <p class="eyebrow">Security work</p>
+      <h2>Work on live production systems.</h2>
+      <p>Every engagement below ran against applications that were in daily use while the work was done. Client details are withheld.</p>
     </div>
-    <div class="about-grid">
-      <figure class="pic reveal brkt">
-        <div class="id-void">
-          <img class="id-fox" src="assets/halcyon-mark.svg" alt="Halcyon fox mark" width="140" height="140" loading="lazy">
-          <span class="id-tag">Identity // Withheld</span>
+    <div class="cases">
+      <article class="case reveal">
+        <div class="case-k"><b>7 weeks</b><span>of undetected access reconstructed</span></div>
+        <div class="case-b">
+          <p class="eyebrow">Incident response</p>
+          <h3>Root-level server compromise, investigated and evicted</h3>
+          <p>A hosting server had been compromised at root, and an earlier cleanup had left the attacker in place. I rebuilt the timeline, catalogued every persistence mechanism, and wrote the eviction runbook and the formal incident report.</p>
+          <ul>
+            <li>A rogue root SSH key that survived the first restore</li>
+            <li>A scheduled job that reissued API tokens after they were revoked</li>
+            <li>Hidden shell accounts disguised as system users</li>
+          </ul>
         </div>
-        <div class="scan"></div>
-        <figcaption class="meta"><u></u>FAQIH // HALCYON <span>STATUS: PRIVATE</span></figcaption>
-      </figure>
-      <div class="about-copy reveal" data-d="1">
-        <p>
-          I work in cybersecurity in Indonesia, mostly on the web application side:
-          <strong>legacy PHP fleets that run real businesses</strong> and were never
-          designed with attackers in mind. My job is making them survivable without
-          breaking a single invoice.
-        </p>
-        <p>
-          The numbers on this page are not from a lab. One audit alone confirmed
-          <strong>83 Critical and High findings</strong>; closing them meant changing
-          four to five hundred files per application while the company kept billing
-          through it. When a hosting server got popped at root, I ran the investigation:
-          seven weeks of dwell time, a self-healing cron job, an SSH key that had no
-          business existing. The attacker got evicted and the report got written.
-        </p>
-        <p>
-          The other half of my work is <strong>AI engineering for companies</strong>:
-          getting coding agents safely onto corporate production servers, and building
-          multi-agent workflows that audit code harder than any single reviewer can.
-        </p>
-        <p>
-          Nights belong to <strong>Halcyon Systems</strong>, my own lab. That is where
-          the fox lives.
-        </p>
-        <div class="certs reveal" data-d="2">
-          <div class="certs-head"><span>CERT_TRACK.STATUS</span><span>PROGRESS: LOADING...</span></div>
-          <div class="cert">
-            <div class="c-name">CompTIA Security+<small>comptia security plus // exam SY0-701</small></div>
-            <span class="badge done">CERTIFIED</span>
-            <div class="bar" role="img" aria-label="Security plus, certified">
-              <u class="done"></u><u class="done"></u><u class="done"></u><u class="done"></u><u class="done"></u><u class="done"></u><u class="done"></u><u class="done"></u><u class="done"></u><u class="done"></u>
-            </div>
-          </div>
-          <div class="cert">
-            <div class="c-name">OSCP<small>offensive security certified professional</small></div>
-            <span class="badge prog">IN PROGRESS</span>
-            <div class="bar" role="img" aria-label="OSCP study progress, in progress">
-              <u class="on"></u><u class="on"></u><u class="on"></u><u class="hot"></u><u></u><u></u><u></u><u></u><u></u><u></u>
-            </div>
-          </div>
-          <div class="cert">
-            <div class="c-name">CISSP<small>certified information systems security professional // the long game</small></div>
-            <span class="badge next">NEXT TARGET</span>
-            <div class="bar" role="img" aria-label="CISSP planned, next target">
-              <u class="hot"></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
-            </div>
-          </div>
+      </article>
+      <article class="case reveal">
+        <div class="case-k"><b>83</b><span>critical and high findings, verified then closed</span></div>
+        <div class="case-b">
+          <p class="eyebrow">Application security audit</p>
+          <h3>Full audit of a flagship ERP</h3>
+          <p>Each finding was confirmed as reachable before it went on the list, then remediated. The audit became the worklist for a hardening program that ran for months.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="rule">
-
-<!-- ============ FIELD RECORD ============ -->
-<section id="security">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="mod"><span class="sl">///</span> .SYS_02.FIELD_RECORD <span class="rt">SOURCE :: PRODUCTION</span></p>
-      <h2 data-scramble>FIELD RECORD</h2>
-      <p class="lede">Real engagements on live systems. Client identifiers are redacted. The scars are not.</p>
-    </div>
-    <div class="bento reveal">
-      <div class="cell w4">
-        <p class="tag"><i>&gt;&gt;</i> DFIR // CASEFILE_ROOT</p>
-        <h3>Root-level server compromise, investigated and evicted</h3>
-        <p>
-          A client's hosting server was compromised at root and a previous "cleanup" had not
-          actually removed the attacker. I reconstructed roughly seven weeks of undetected
-          access, catalogued the persistence, and wrote the eviction runbook plus a formal
-          DFIR report.
-        </p>
-        <ul class="ioc">
-          <li>rogue root SSH key surviving the first restore</li>
-          <li>self-healing cron job re-minting revoked API tokens</li>
-          <li>hidden shell accounts posing as system users</li>
-          <li>rootkit-aware method: verify the binaries before trusting their output</li>
-        </ul>
-        <p class="foot">DWELL TIME <b>~7 WEEKS</b> :: IOCs CATALOGUED <b>10+</b></p>
-      </div>
-      <div class="cell w2">
-        <p class="tag"><i>&gt;&gt;</i> AUDIT</p>
-        <p class="num">83</p>
-        <h3>Critical / High findings, confirmed then closed</h3>
-        <p>A full application security audit of the flagship ERP. Every finding verified as reachable, then remediated. The audit doubled as the worklist for a months-long hardening program.</p>
-        <p class="foot">METHOD <b>24-STAGE ANALYSIS</b></p>
-      </div>
-      <div class="cell w2">
-        <p class="tag"><i>&gt;&gt;</i> SQLI // ATTACK SURFACE</p>
-        <p class="num">5,578</p>
-        <h3>Injectable query sites mapped in one codebase</h3>
-        <p>Against about 166 parameterized statements. An abstract risk turned into a countable, closeable worklist, then closed with a regression-safe recipe across 400 to 500 files per app.</p>
-        <p class="foot">GUARDS DEPLOYED <b>UP TO 1,046 / APP</b></p>
-      </div>
-      <div class="cell w2">
-        <p class="tag"><i>&gt;&gt;</i> ACCESS CONTROL</p>
-        <p class="num">10<i>/10</i></p>
-        <h3>Fleet-wide IDOR shutdown</h3>
-        <p>The UI hid unauthorized menus, but any logged-in user could open any module by URL, finance screens included. Built a folder-level gate that fails closed and shipped it to all ten apps.</p>
-        <p class="foot">VERIFIED AGAINST <b>3,275 PERMISSION ROWS</b></p>
-      </div>
-      <div class="cell w2">
-        <p class="tag"><i>&gt;&gt;</i> RCE</p>
-        <p class="num">0<i>day left open</i></p>
-        <h3>Unauthenticated upload RCE, closed</h3>
-        <p>File importers reachable without login wrote uploads under their original names into web-served directories. Auth gates, strict allowlists, safe renaming, and script execution disabled in every upload folder.</p>
-        <p class="foot">VALIDATED WITH <b>REAL MULTIPART UPLOADS</b></p>
-      </div>
-      <div class="cell w2">
-        <p class="tag"><i>&gt;&gt;</i> DATA EXPOSURE</p>
-        <p class="num">120<i>+</i></p>
-        <h3>Anonymous export endpoints re-gated</h3>
-        <p>Print, PDF, and spreadsheet exports had login checks commented out, serving financial data to anyone who asked. Every live endpoint now answers unauthorized requests with a 403.</p>
-        <p class="foot">SCOPE <b>PER APPLICATION</b></p>
-      </div>
-      <div class="cell w4">
-        <p class="tag"><i>&gt;&gt;</i> MIGRATION // LEAST PRIVILEGE</p>
-        <h3>Access rebuilt for 118 real users</h3>
-        <p>
-          Rebuilt user permissions by semantically mapping 706 distinct legacy menu grants out of a
-          22,000-row legacy table into the current schema: 3,275 rows migrated. An earlier ID-based
-          copy looked fine and was quietly wrong; it got caught and rolled back before anyone
-          inherited access they should not have.
-        </p>
-        <p class="foot">ROWS MIGRATED <b>3,275</b> :: USERS <b>118</b></p>
-      </div>
-      <div class="cell w6">
-        <p class="tag"><i>&gt;&gt;</i> CSRF // DEFENSE IN DEPTH</p>
-        <h3>Global CSRF layer, plus the three regressions it caused</h3>
-        <p>
-          Per-session tokens, automatic AJAX injection, central verification. Then the honest part:
-          the rollout broke things in subtle ways, and I root-caused all three regression classes.
-          A token silently truncated by PHP's max_input_vars on huge forms. A sanitizer that poisoned
-          the commit stack on empty input. A report page that reloaded jQuery at runtime and wiped
-          the token prefilter. Each one fixed fleet-wide.
-        </p>
-        <p class="foot">REGRESSION CLASSES ROOT-CAUSED <b>3</b></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="ghost" aria-hidden="true">
-  <div class="ghost-track">
-    <span>HALCYON SYSTEMS /// HALCYON PRIME /// </span>
-    <span>HALCYON SYSTEMS /// HALCYON PRIME /// </span>
-  </div>
-</div>
-
-<!-- ============ THE LAB ============ -->
-<section id="halcyon">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="mod"><span class="sl">///</span> .SYS_03.THE_LAB <span class="rt">STATUS :: BUILDING</span></p>
-      <h2 data-scramble>HALCYON SYSTEMS</h2>
-    </div>
-    <div class="lab-panel reveal brkt">
-      <img src="assets/halcyon-lockup.webp" alt="Halcyon System lockup, a white and cyan fox mark with glitch lettering" width="1629" height="584" loading="lazy">
-      <div class="scan"></div>
-    </div>
-    <div class="lab-meta">
-      <div class="reveal">
-        <p>
-          Halcyon Systems is my independent lab. Everything I build outside working hours
-          ships under the fox: security tooling, agent infrastructure, and the automation
-          that runs my own machines.
-        </p>
-        <p>
-          The current focus is <strong>Halcyon Prime</strong>, the core platform the rest of
-          the lab will hang off. It is in active development, and I'm keeping the details
-          close until it is ready to show. The status board does not lie, though.
-        </p>
-      </div>
-      <div class="status reveal brkt" data-d="1">
-        <p class="st-head"><span>SYSTEM STATUS</span><span>ALL GREEN</span></p>
-        <ul>
-          <li><u class="led-live"></u>HALCYON PRIME<span>ACTIVE DEV</span></li>
-          <li><u class="led-dev"></u>NEURALGRID<span>PROTOTYPE</span></li>
-          <li><u class="led-dev"></u>OPENCLAW GATEWAY<span>ONLINE</span></li>
-          <li><u class="led-idle"></u>STARFORGE<span>STABLE</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="rule">
-
-<!-- ============ PROJECTS ============ -->
-<section id="projects">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="mod"><span class="sl">///</span> .SYS_04.SYSTEMS <span class="rt">COUNT :: 05</span></p>
-      <h2 data-scramble>SELECTED SYSTEMS</h2>
-    </div>
-    <div class="projects reveal">
-      <article class="proj flag">
-        <p class="p-top"><span>SYS_01</span><span>CLASSIFIED_</span></p>
-        <h3>HALCYON PRIME</h3>
-        <p>The flagship. The core platform of Halcyon Systems, in active development. Publicly quiet on purpose; it gets revealed when it works, not before.</p>
-        <div class="p-tags"><i>IN DEV</i><i>CORE</i></div>
       </article>
-      <article class="proj">
-        <p class="p-top"><span>SYS_02</span><span>OPS_</span></p>
-        <h3>NEURALGRID</h3>
-        <p>An operations HUD that wraps headless AI agents over a live app fleet and an Obsidian knowledge vault, with a Three.js graph as the map.</p>
-        <div class="p-tags"><i>AGENTS</i><i>THREE.JS</i><i>DASHBOARD</i></div>
+      <article class="case reveal">
+        <div class="case-k"><b>5,578</b><span>injectable query sites in one codebase</span></div>
+        <div class="case-b">
+          <p class="eyebrow">SQL injection</p>
+          <h3>An attack surface counted, then closed</h3>
+          <p>The codebase had about 166 parameterized statements against thousands of concatenated ones. I mapped every site and closed them with a repeatable, regression-tested method across 400 to 500 files per application.</p>
+        </div>
       </article>
-      <article class="proj">
-        <p class="p-top"><span>SYS_03</span><span>GATEWAY_</span></p>
-        <h3>OPENCLAW</h3>
-        <p>A self-hosted personal assistant gateway, reachable from a Telegram bot, running against local agent infrastructure. Hardened after a 22-bug adversarial review.</p>
-        <div class="p-tags"><i>AGENTS</i><i>SELF-HOSTED</i><i>TELEGRAM</i></div>
+      <article class="case reveal">
+        <div class="case-k"><b>10 of 10</b><span>applications behind a fail-closed access gate</span></div>
+        <div class="case-b">
+          <p class="eyebrow">Access control</p>
+          <h3>Broken access control fixed across the fleet</h3>
+          <p>Menus were hidden from unauthorized users, but any account could open any module by URL, finance screens included. More than 120 print and export endpoints per application answered without a login. I built a folder-level gate that denies by default, then rebuilt permissions for 118 users from a 22,000-row legacy table.</p>
+        </div>
       </article>
-      <article class="proj">
-        <p class="p-top"><span>SYS_04</span><span>ECON_</span></p>
-        <h3>STARFORGE</h3>
-        <p>A crafting operating system for a space sim: screenshot-to-database ingestion, a deterministic dependency-tree profit calculator, and a 471-item knowledge graph.</p>
-        <div class="p-tags"><i>PYTHON</i><i>OBSIDIAN</i><i>GRAPH</i></div>
+      <article class="case reveal">
+        <div class="case-k"><b>RCE</b><span>unauthenticated file upload, closed</span></div>
+        <div class="case-b">
+          <p class="eyebrow">Remote code execution</p>
+          <h3>Upload endpoints locked down</h3>
+          <p>File importers were reachable without a login and saved uploads under their original names in web-served folders. The fix added authentication, strict allowlists and safe renaming, and disabled script execution in every upload directory. I validated it with real multipart uploads.</p>
+        </div>
       </article>
-      <article class="proj">
-        <p class="p-top"><span>SYS_05</span><span>FLEET_</span></p>
-        <h3>ERP FLEET</h3>
-        <p>Ten production PHP applications for an industrial group: billing engines, reporting, print pipelines, and every deploy that keeps them alive. The day job's proving ground.</p>
-        <div class="p-tags"><i>PHP</i><i>MYSQL</i><i>10 APPS</i></div>
+      <article class="case reveal">
+        <div class="case-k"><b>3</b><span>regression classes traced to root cause</span></div>
+        <div class="case-b">
+          <p class="eyebrow">CSRF</p>
+          <h3>A global CSRF layer, and the regressions it caused</h3>
+          <p>Per-session tokens with automatic AJAX injection and central verification. The rollout broke a few pages in ways that were hard to see: tokens truncated on very large forms, and a report page that reloaded its JavaScript library and dropped the token handler. I traced each one and fixed it on every application.</p>
+        </div>
       </article>
     </div>
   </div>
 </section>
 
-<hr class="rule">
-
-<!-- ============ AI OPS ============ -->
 <section id="ai">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="mod"><span class="sl">///</span> .SYS_05.AI_OPS <span class="rt">MODE :: PRODUCTION</span></p>
-      <h2 data-scramble>AI ENGINEERING</h2>
-      <p class="lede">Not chatbot demos. Agents with real permissions on real infrastructure, deployed like anything else that can break production: carefully.</p>
+      <p class="eyebrow">AI engineering</p>
+      <h2>Agents with real permissions, deployed carefully.</h2>
+      <p>I treat an AI agent on a company server like any other software that can break production. It gets audited, scoped and monitored before it gets access.</p>
     </div>
-    <div class="bento reveal">
-      <div class="cell w3">
-        <p class="tag"><i>&gt;&gt;</i> CORPORATE ROLLOUT</p>
-        <h3>Coding agents on enterprise production servers</h3>
-        <p>
-          Putting an AI agent on a corporate host is a compliance problem wearing a technical
-          costume, and I treat it that way. Audit the floor first: kernel and libc versions,
-          CPU instruction sets, hosting panel and firewall stacks. Open exactly one API
-          endpoint through egress policy and prove it with a live handshake. Authenticate
-          with headless tokens, because production boxes do not get interactive logins.
-        </p>
-        <p class="foot">TARGET <b>ENTERPRISE LINUX // CPANEL STACKS</b></p>
+    <div class="cards">
+      <article class="card reveal">
+        <p class="eyebrow">Deployment</p>
+        <h3>Coding agents on enterprise servers</h3>
+        <p>Before an agent runs on a corporate host I check the operating system and hardware requirements, open a single outbound API endpoint through the firewall, and set up non-interactive authentication so no personal login ever sits on a production machine.</p>
+      </article>
+      <article class="card reveal">
+        <p class="eyebrow">Review</p>
+        <h3>Multi-agent code review</h3>
+        <p>One group of agents looks for defects and a second group tries to disprove each finding, so only verified problems reach a human. A single review has run 28 agents, and one caught 22 real bugs in a service before release.</p>
+      </article>
+      <article class="card reveal">
+        <p class="eyebrow">Infrastructure</p>
+        <h3>Self-hosted agent tooling</h3>
+        <p>I build and run my own agent gateways and operations dashboards. They are the staging ground: a pattern has to hold up there before I recommend it to a company.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="lab">
+  <div class="wrap">
+    <div class="lab">
+      <div class="lab-img reveal">
+        <img src="assets/halcyon-lockup.webp" alt="Halcyon System logo: a fox mark beside the wordmark" width="1629" height="584" loading="lazy">
       </div>
-      <div class="cell w3">
-        <p class="tag"><i>&gt;&gt;</i> AGENT INFRASTRUCTURE</p>
-        <h3>Gateways, HUDs, and control surfaces</h3>
-        <p>
-          Self-hosted agent gateways reachable from a chat app. An operations HUD that wraps
-          headless agents over a live application fleet and a knowledge vault. The lab systems
-          double as staging: what survives there is what lands on corporate metal.
-        </p>
-        <p class="foot">SYSTEMS <b>OPENCLAW // NEURALGRID</b></p>
-      </div>
-      <div class="cell w6">
-        <p class="tag"><i>&gt;&gt;</i> MULTI-AGENT PRACTICE</p>
-        <h3>Agent swarms as an engineering discipline</h3>
-        <p>
-          I run adversarial review workflows where agents hunt for defects and other agents try
-          to refute the findings, so only verified problems survive. One review ran 28 agents in
-          a single pass; another caught 22 real bugs in a gateway before it shipped. The fleet
-          hardening program ran on the same machinery, pairing deterministic code transforms with
-          adversarial verification at a scale no single reviewer can match.
-        </p>
-        <p class="foot">PEAK SWARM <b>28 AGENTS</b> :: CONFIRMED BUGS IN ONE REVIEW <b>22</b></p>
+      <div class="reveal">
+        <p class="eyebrow">Independent lab</p>
+        <h2>Halcyon Systems</h2>
+        <p>Halcyon Systems is where I build outside of client work: security tooling, agent infrastructure and the automation that runs my own machines.</p>
+        <p>The current focus is <strong>Halcyon Prime</strong>, the core platform the rest of the lab will build on. It is in active development, and I will share details once it is ready.</p>
       </div>
     </div>
   </div>
 </section>
 
-<hr class="rule">
-
-<!-- ============ EXPERIENCE ============ -->
 <section id="experience">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="mod"><span class="sl">///</span> .SYS_06.SERVICE_LOG <span class="rt">RECORDS :: 02</span></p>
-      <h2 data-scramble>SERVICE LOG</h2>
-    </div>
-    <div class="xp reveal brkt">
-      <div class="xp-item">
-        <p class="xp-when"><b>ACTIVE</b>CURRENT POST</p>
-        <div class="xp-body">
-          <h3>Cybersecurity Engineer</h3>
-          <p class="xp-org">PT. Datapart // Indonesia</p>
-          <p>
-            Infrastructure and application security. Server provisioning and hardening,
-            incident response when it counts, and rolling out AI-assisted tooling on
-            production Linux hosts.
-          </p>
+    <div class="two">
+      <div class="reveal">
+        <p class="eyebrow">Experience</p>
+        <h2>Roles</h2>
+        <div class="rows">
+          <div class="row">
+            <div class="row-top"><h3>Cybersecurity Engineer</h3><small>Current</small></div>
+            <p class="org">PT. Datapart, Indonesia</p>
+            <p class="desc">Infrastructure and application security: server provisioning and hardening, incident response, and AI-assisted tooling on production Linux hosts.</p>
+          </div>
+          <div class="row">
+            <div class="row-top"><h3>Application Security Engineer</h3><small>Ongoing</small></div>
+            <p class="org">Multi-company ERP fleet, industrial group</p>
+            <p class="desc">Sole engineer for ten production PHP applications, responsible for security hardening, feature work and every production deployment.</p>
+          </div>
         </div>
       </div>
-      <div class="xp-item">
-        <p class="xp-when"><b>ONGOING</b>ENGAGEMENT</p>
-        <div class="xp-body">
-          <h3>Application Security &amp; Engineering</h3>
-          <p class="xp-org">Multi-company ERP fleet // industrial group</p>
-          <p>
-            Sole engineer for ten production PHP applications. Security hardening at fleet
-            scale, feature development, billing and reporting engines, and the production
-            deployments in between.
-          </p>
+      <div class="reveal">
+        <p class="eyebrow">Certifications</p>
+        <h2>Credentials</h2>
+        <div class="rows">
+          <div class="row">
+            <div class="row-top"><h3>CompTIA Security+</h3><small class="ok">Certified</small></div>
+            <p class="org">Exam SY0-701</p>
+          </div>
+          <div class="row">
+            <div class="row-top"><h3>OSCP</h3><small>In progress</small></div>
+            <p class="org">Offensive Security Certified Professional</p>
+          </div>
+          <div class="row">
+            <div class="row-top"><h3>CISSP</h3><small>Planned</small></div>
+            <p class="org">Certified Information Systems Security Professional</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<hr class="rule">
-
-<!-- ============ SKILLS ============ -->
 <section id="skills">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="mod"><span class="sl">///</span> .SYS_07.ARSENAL <span class="rt">LOADOUT :: FULL</span></p>
-      <h2 data-scramble>ARSENAL</h2>
+      <p class="eyebrow">Skills</p>
+      <h2>What I work with.</h2>
     </div>
-    <div class="skills reveal">
-      <div class="skill-group">
-        <h3><i>&gt;&gt;</i> OFFENSE // ASSESSMENT</h3>
-        <div class="chips">
-          <i>WEB APP PENTESTING</i><i>SQL INJECTION</i><i>XSS</i><i>CSRF</i><i>IDOR / BAC</i><i>LFI</i><i>UPLOAD RCE</i><i>ATTACK SURFACE MAPPING</i>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h3><i>&gt;&gt;</i> DFIR // RESPONSE</h3>
-        <div class="chips">
-          <i>THREAT HUNTING</i><i>IOC ANALYSIS</i><i>PERSISTENCE DISCOVERY</i><i>LOG FORENSICS</i><i>ROOTKIT-AWARE TRIAGE</i><i>INCIDENT REPORTS</i><i>REMEDIATION RUNBOOKS</i>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h3><i>&gt;&gt;</i> DEFENSE // HARDENING</h3>
-        <div class="chips">
-          <i>PREPARED STATEMENTS</i><i>INPUT ALLOWLISTING</i><i>OUTPUT ENCODING</i><i>CSRF LAYERS</i><i>SESSION HARDENING</i><i>ACCESS GATES</i><i>REGRESSION-SAFE ROLLOUTS</i>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h3><i>&gt;&gt;</i> ENGINEERING // STACK</h3>
-        <div class="chips">
-          <i>PHP</i><i>MYSQL / MARIADB</i><i>JAVASCRIPT</i><i>PYTHON</i><i>LUA</i><i>LINUX</i><i>CPANEL / WHM</i><i>APACHE</i>
-        </div>
-      </div>
-      <div class="skill-group wide">
-        <h3><i>&gt;&gt;</i> AI ENGINEERING</h3>
-        <div class="chips">
-          <i>CLAUDE CODE</i><i>AI AGENTS</i><i>MULTI-AGENT WORKFLOWS</i><i>MCP</i><i>HEADLESS DEPLOYMENT</i><i>AGENT GATEWAYS</i><i>EGRESS / COMPLIANCE VETTING</i><i>ADVERSARIAL AI REVIEW</i><i>PROMPT + CONTEXT ENGINEERING</i>
-        </div>
-      </div>
-    </div>
+    <dl class="skills reveal">
+      <div class="skill"><dt>Offensive testing</dt><dd>Web application penetration testing, SQL injection, XSS, CSRF, broken access control and IDOR, file inclusion, upload RCE, attack surface mapping</dd></div>
+      <div class="skill"><dt>Incident response</dt><dd>Threat hunting, IOC analysis, persistence discovery, log forensics, rootkit-aware triage, incident reports, remediation runbooks</dd></div>
+      <div class="skill"><dt>Hardening</dt><dd>Prepared statements, input allowlisting, output encoding, CSRF protection, session hardening, access gates, regression-safe rollouts</dd></div>
+      <div class="skill"><dt>AI engineering</dt><dd>AI agents and multi-agent workflows, Claude Code, MCP, headless deployment, egress and compliance vetting, adversarial AI review</dd></div>
+      <div class="skill"><dt>Platform</dt><dd>Linux, Apache, cPanel and WHM, PHP, MySQL and MariaDB, Python, JavaScript</dd></div>
+    </dl>
   </div>
 </section>
 
-<div class="hazard" aria-hidden="true"></div>
-
-<!-- ============ CONTACT ============ -->
 <section id="contact" class="contact">
   <div class="wrap">
-    <img class="fox reveal" src="assets/halcyon-mark.svg" alt="Halcyon fox mark" width="104" height="104" loading="lazy">
-    <h2 class="reveal" data-d="1" data-scramble>OPEN CHANNEL</h2>
-    <p class="sub reveal" data-d="2">
-      Security problem, project, or you just want to talk shop. The inbox is open.
-    </p>
-    <div class="reveal contact-actions" data-d="3">
-      <a class="btn btn-solid" href="mailto:halcyon9r@gmail.com">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
-        halcyon9r@gmail.com
-      </a>
-      <a class="btn" href="https://github.com/halcyon9r" target="_blank" rel="noopener">
-        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-        github.com/halcyon9r
-      </a>
+    <img class="reveal" src="assets/halcyon-mark.svg" alt="" width="64" height="64" loading="lazy">
+    <h2 class="reveal">Get in touch.</h2>
+    <p class="reveal">For security assessments, incident response or AI deployment work, email is the fastest way to reach me.</p>
+    <div class="cta reveal">
+      <a class="btn btn-solid" href="mailto:halcyon9r@gmail.com">halcyon9r@gmail.com</a>
+      <a class="btn" href="https://github.com/halcyon9r" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
 </section>
@@ -912,14 +411,12 @@ footer b{color:var(--dim);font-weight:500}
 
 <footer>
   <div class="wrap">
-    <span><b>HALCYON SYSTEM</b> // FAQIH</span>
-    <span><a href="https://github.com/halcyon9r" target="_blank" rel="noopener">GITHUB :: <b>@HALCYON9R</b></a></span>
-    <span>© <span id="yr"></span> HLCYN.SYSTEMS</span>
+    <span>© <span id="yr"></span> Halcyon Systems</span>
+    <span><a href="https://github.com/halcyon9r" target="_blank" rel="noopener">github.com/halcyon9r</a></span>
   </div>
 </footer>
 
 <script>
-// nav
 const header=document.querySelector('header');
 const toggle=document.querySelector('.nav-toggle');
 const links=document.getElementById('navlinks');
@@ -932,110 +429,19 @@ links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   links.classList.remove('open');toggle.setAttribute('aria-expanded','false');
 }));
 
-const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-// reveal on scroll
 const io=new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
-}),{threshold:.12});
+}),{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// glitch bursts on the H1
-const g=document.querySelector('.glitch');
-if(!reduced){
-  setInterval(()=>{g.classList.add('burst');setTimeout(()=>g.classList.remove('burst'),380);},3600);
-}
-
-// decode-scramble on section headings
-const CHARS='#/\\<>[]{}|=+*%$@!01';
-function scramble(el){
-  const final=el.dataset.final||el.textContent;
-  el.dataset.final=final;
-  let frame=0;
-  const total=Math.max(14,final.length*2);
-  (function tick(){
-    let out='';
-    for(let i=0;i<final.length;i++){
-      if(final[i]===' '){out+=' ';continue;}
-      const settle=(i+1)*(total/final.length)*0.85;
-      out+=frame>=settle?final[i]:CHARS[(Math.random()*CHARS.length)|0];
-    }
-    el.textContent=out;
-    if(frame++<total)requestAnimationFrame(tick);
-    else el.textContent=final;
-  })();
-}
-const sIo=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;sIo.unobserve(e.target);
-  if(!reduced)scramble(e.target);
-}),{threshold:.5});
-document.querySelectorAll('[data-scramble]').forEach(el=>sIo.observe(el));
-
-// terminal
-const SCRIPT=[
-  {t:'cmd',x:'whoami'},
-  {t:'out',x:'faqih :: cybersecurity // ai engineer // netrunner'},
-  {t:'cmd',x:'./certs --status'},
-  {t:'out',x:'sec+   [##########]  <k>CERTIFIED</k>'},
-  {t:'out',x:'oscp   [####------]  <w>IN PROGRESS</w>'},
-  {t:'out',x:'cissp  [----------]  <n>NEXT TARGET</n>'},
-  {t:'cmd',x:'systemctl status halcyon-prime'},
-  {t:'out',x:'<k>● active (building)</k> :: details classified'},
-];
-const term=document.getElementById('term');
-function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-  .replace(/&lt;w&gt;/g,'<span class="warn">').replace(/&lt;\/w&gt;/g,'</span>')
-  .replace(/&lt;n&gt;/g,'<span class="next">').replace(/&lt;\/n&gt;/g,'</span>')
-  .replace(/&lt;k&gt;/g,'<span class="ok">').replace(/&lt;\/k&gt;/g,'</span>');}
-async function runTerm(){
-  for(const line of SCRIPT){
-    const ln=document.createElement('div');ln.className='ln';term.appendChild(ln);
-    if(line.t==='cmd'){
-      ln.innerHTML='<span class="p">$ </span>';
-      const span=document.createElement('span');ln.appendChild(span);
-      const c=document.createElement('span');c.className='caret';ln.appendChild(c);
-      if(reduced){span.textContent=line.x;}
-      else{for(const ch of line.x){span.textContent+=ch;await new Promise(r=>setTimeout(r,30+Math.random()*38));}}
-      c.remove();
-    }else{
-      ln.classList.add('out');ln.innerHTML=esc(line.x);
-      if(!reduced)await new Promise(r=>setTimeout(r,110));
-    }
-  }
-  const end=document.createElement('div');end.className='ln';
-  end.innerHTML='<span class="p">$ </span><span class="caret"></span>';
-  term.appendChild(end);
-}
-runTerm();
-
-// stat counters
-const statIo=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;statIo.unobserve(e.target);
-  e.target.querySelectorAll('span[data-n]').forEach(b=>{
-    const n=+b.dataset.n;
-    const fmt=v=>v.toLocaleString('en-US');
-    if(reduced){b.textContent=fmt(n);return;}
-    const t0=performance.now(),dur=1300;
-    (function tick(t){
-      const p=Math.min(1,(t-t0)/dur),ease=1-Math.pow(1-p,3);
-      b.textContent=fmt(Math.round(n*ease));
-      if(p<1)requestAnimationFrame(tick);
-    })(t0);
-  });
-}),{threshold:.4});
-statIo.observe(document.getElementById('stats'));
-
-// year
-document.getElementById('yr').textContent=new Date().getFullYear();
-
-// active nav link
-const secs=[...document.querySelectorAll('section[id]')];
 const navA=[...links.querySelectorAll('a')];
 const secIo=new IntersectionObserver(es=>es.forEach(e=>{
   if(!e.isIntersecting)return;
   navA.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));
 }),{rootMargin:'-40% 0px -55% 0px'});
-secs.forEach(s=>secIo.observe(s));
+document.querySelectorAll('section[id]').forEach(s=>secIo.observe(s));
+
+document.getElementById('yr').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
