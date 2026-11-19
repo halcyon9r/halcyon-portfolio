@@ -285,6 +285,14 @@ footer a:hover{color:var(--ink)}
         </div>
       </article>
       <article class="case reveal">
+        <div class="case-k"><b>301k</b><span>log lines hunted after a critical PHP disclosure</span></div>
+        <div class="case-b">
+          <p class="eyebrow">Vulnerability response</p>
+          <h3>Remote code execution in PHP, assessed within a day</h3>
+          <p>When a critical PHP vulnerability came under active exploitation, I confirmed which builds on the production server had received the fix, found the unused interpreter versions that had not, and searched the access logs for exploitation attempts. There were none. The end-of-life runtime only had a partial upstream fix, so I added a configuration mitigation and wrote the plan to move every application to a supported version.</p>
+        </div>
+      </article>
+      <article class="case reveal">
         <div class="case-k"><b>3</b><span>regression classes traced to root cause</span></div>
         <div class="case-b">
           <p class="eyebrow">CSRF</p>
@@ -334,6 +342,7 @@ footer a:hover{color:var(--ink)}
         <h2>Halcyon Systems</h2>
         <p>Halcyon Systems is where I build outside of client work: security tooling, agent infrastructure and the automation that runs my own machines.</p>
         <p>The current focus is <strong>Halcyon Prime</strong>, the core platform the rest of the lab will build on. It is in active development, and I will share details once it is ready.</p>
+        <p>Next to it I am setting up a defensive home lab that models a small company network, with segmented VLANs, Active Directory, a SIEM and endpoint detection, so I can practise the blue team side on real equipment.</p>
       </div>
     </div>
   </div>
@@ -346,6 +355,11 @@ footer a:hover{color:var(--ink)}
         <p class="eyebrow">Experience</p>
         <h2>Roles</h2>
         <div class="rows">
+          <div class="row">
+            <div class="row-top"><h3>Head of Platform and Security</h3><small>Co-founder</small></div>
+            <p class="org">Early-stage SaaS for construction document workflows, Singapore market</p>
+            <p class="desc">I own the platform build, infrastructure and releases, and I answer for security: the security baseline, data protection requirements under Singapore's PDPA, and the risks of running AI over documents supplied by third parties.</p>
+          </div>
           <div class="row">
             <div class="row-top"><h3>Cybersecurity Engineer</h3><small>Current</small></div>
             <p class="org">PT. Datapart, Indonesia</p>
@@ -388,10 +402,10 @@ footer a:hover{color:var(--ink)}
     </div>
     <dl class="skills reveal">
       <div class="skill"><dt>Offensive testing</dt><dd>Web application penetration testing, SQL injection, XSS, CSRF, broken access control and IDOR, file inclusion, upload RCE, attack surface mapping</dd></div>
-      <div class="skill"><dt>Incident response</dt><dd>Threat hunting, IOC analysis, persistence discovery, log forensics, rootkit-aware triage, incident reports, remediation runbooks</dd></div>
-      <div class="skill"><dt>Hardening</dt><dd>Prepared statements, input allowlisting, output encoding, CSRF protection, session hardening, access gates, regression-safe rollouts</dd></div>
+      <div class="skill"><dt>Incident response</dt><dd>Threat hunting, IOC analysis, persistence discovery, log forensics, rootkit-aware triage, vulnerability response, incident reports, remediation runbooks</dd></div>
+      <div class="skill"><dt>Hardening</dt><dd>Prepared statements, input allowlisting, output encoding, CSRF protection, session hardening, access gates, security baselines, regression-safe rollouts</dd></div>
       <div class="skill"><dt>AI engineering</dt><dd>AI agents and multi-agent workflows, Claude Code, MCP, headless deployment, egress and compliance vetting, adversarial AI review</dd></div>
-      <div class="skill"><dt>Platform</dt><dd>Linux, Apache, cPanel and WHM, PHP, MySQL and MariaDB, Python, JavaScript</dd></div>
+      <div class="skill"><dt>Platform</dt><dd>Linux, Apache, cPanel and WHM, PHP, MySQL and MariaDB, PostgreSQL, Redis, Python, JavaScript</dd></div>
     </dl>
   </div>
 </section>
