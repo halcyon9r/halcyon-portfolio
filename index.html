@@ -265,7 +265,7 @@ footer a:hover{color:var(--ink)}
         <div class="case-b">
           <p class="eyebrow">SQL injection</p>
           <h3>An attack surface counted, then closed</h3>
-          <p>The codebase had about 166 parameterized statements against thousands of concatenated ones. I mapped every site and closed them with a repeatable, regression-tested method across 400 to 500 files per application.</p>
+          <p>The codebase had about 166 parameterized statements against thousands of concatenated ones. I mapped every site with a script, then closed them with scripted code transforms across 400 to 500 files per application. Each batch was checked by automated review and regression tests before it shipped, which is how one engineer could do it without stopping the business.</p>
         </div>
       </article>
       <article class="case reveal">
@@ -320,7 +320,7 @@ footer a:hover{color:var(--ink)}
       <article class="card reveal">
         <p class="eyebrow">Review</p>
         <h3>Multi-agent code review</h3>
-        <p>One group of agents looks for defects and a second group tries to disprove each finding, so only verified problems reach a human. A single review has run 28 agents, and one caught 22 real bugs in a service before release.</p>
+        <p>One group of agents looks for defects and a second group tries to disprove each finding, so only verified problems reach a human. A single review has run 28 agents, and one caught 22 real bugs in a service before release. The same setup verified the hardening work across the ten-application fleet described above.</p>
       </article>
       <article class="card reveal">
         <p class="eyebrow">Infrastructure</p>
